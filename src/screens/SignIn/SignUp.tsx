@@ -14,7 +14,7 @@ import CustomButton from '../../component/customButton/CustomButton';
 import ConfirmEmail from '../ConfirmEmail/ConfirmEmail';
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>
 
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&*+/=?^_^{}~]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
 const SignUp = ({ navigation }: HomeProps) => {
 
@@ -66,6 +66,7 @@ const SignUp = ({ navigation }: HomeProps) => {
             name="Full Name"
             placeholder="Full Name"
             control={control}
+            rules={{required:'Full Name is required'}}
           />
         </View>
 
@@ -74,6 +75,7 @@ const SignUp = ({ navigation }: HomeProps) => {
             name="Email"
             placeholder="Email"
             control={control}
+            rules={{pattern: {value:EMAIL_REGEX,message:'Email is invalid'}}}
           />
         </View>
 
@@ -84,6 +86,13 @@ const SignUp = ({ navigation }: HomeProps) => {
             placeholder="Password"
             secureTextEntry={true}
             control={control}
+            rules={{
+              required:'Password is required',
+              minLength:{
+                value:8,
+                message:'Password must be 8 characters long'
+              }
+          }}
 
           />
         </View>
@@ -94,6 +103,10 @@ const SignUp = ({ navigation }: HomeProps) => {
             placeholder="Re-enter Password"
             secureTextEntry={true}
             control={control}
+            rules={{
+                validate: value => value.length<5 ? true: 'password do not match '
+              }
+          }
 
           />
         </View>

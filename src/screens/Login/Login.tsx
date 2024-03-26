@@ -64,7 +64,7 @@ const Login = ({ navigation }: HomeProps) => {
             name="Email ID/Phone Number"
             placeholder="Email ID/Phone Number"
             control={control}
-            rules={{ required: true }}
+            rules={{ required: 'Email is required' }}
 
           />
 
@@ -79,7 +79,7 @@ const Login = ({ navigation }: HomeProps) => {
             placeholder='Password'
             secureTextEntry={!isPasswordVisible}
             control={control}
-            rules={{ required: true }}
+            rules={{ required: 'Password is required',minLength:{value:8,message:'Password must be minimum 8 characters long'} }}
           />
         </View>
 

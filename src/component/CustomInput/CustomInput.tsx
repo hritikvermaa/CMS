@@ -12,7 +12,8 @@ const CustomInput = ({control,name,rules={},placeholder, secureTextEntry}) => {
            name={name}
           rules={rules}
            render={({field:{value,onChange,onBlur},fieldState: {error}}) => (
-             <View style={CustomStyles.userName}>
+            <>
+             <View style={[CustomStyles.userName,{borderColor: error ?'red' : '#000'}]}>
               <TextInput
                style={CustomStyles.input}
              placeholder={placeholder}
@@ -24,6 +25,10 @@ const CustomInput = ({control,name,rules={},placeholder, secureTextEntry}) => {
              />
               
              </View>
+             {error && (
+             <Text style={{color:'red',marginHorizontal:20}}>{error.message || 'Error'}</Text>
+             )}
+             </>
            )}
    
          />

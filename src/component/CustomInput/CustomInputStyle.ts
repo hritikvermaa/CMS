@@ -12,7 +12,8 @@ const CustomStyles = StyleSheet.create({
    paddingHorizontal:10,
    color:'#000'
   },
-  
+  userName:{},
+    
 
 })
 
